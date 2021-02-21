@@ -7,14 +7,11 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         // can add spacing but leave for standard padding
         // HStack(spacing:content:)
-        return HStack {
-            // can't set vars here
-            // set outside return scope
-            ForEach(viewModel.cards) { card in
-                CardView(card: card).onTapGesture {
-                    viewModel.choose(card: card)
-                }
+        Grid(items: viewModel.cards) { card in
+            CardView(card: card).onTapGesture {
+                viewModel.choose(card: card)
             }
+            .padding(6)
         }
         .padding()
         .foregroundColor(.orange)
@@ -39,7 +36,10 @@ struct CardView: View {
                 Text(card.content)
             } else {
                 // orange background applied to it from parent body contentView
-                RoundedRectangle(cornerRadius: cornerRadius).fill()
+                if !card.isMatched {
+                    RoundedRectangle(cornerRadius: cornerRadius).fill()
+                }
+                // makes empty view in else case
             }
         }
         .font(Font.system(size: fontSize(for: size)))
