@@ -7,7 +7,7 @@ class EmojiMemoryGame: ObservableObject {
     @Published private var game: MemoryGame<String> = createMemoryGame()
 
     // function on the type itself not instance
-    static func createMemoryGame() -> MemoryGame<String> {
+    private static func createMemoryGame() -> MemoryGame<String> {
         let emojis: Array<String> = ["👻", "🎃", "🧙‍♀️", "😸"]
         return MemoryGame(numberOfPairsOfCards: emojis.count) { pairIndex in emojis[pairIndex] }
     }

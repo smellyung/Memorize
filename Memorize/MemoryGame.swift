@@ -4,9 +4,9 @@ import Foundation
 // CardContent is dont care type
 // is decided when creating instance of MemoryGame
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    var cards: Array<Card>
+    private(set) var cards: Array<Card>
 
-    var indexOfTheOneAndOnlyFaceUpCard: Int? {
+    private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get {
             // find all card indices where isFaceUp = true
             // if there's only 1 card that means its the only face up card
