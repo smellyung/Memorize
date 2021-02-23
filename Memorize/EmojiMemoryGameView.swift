@@ -16,6 +16,12 @@ struct EmojiMemoryGameView: View {
         .padding()
         .foregroundColor(.orange)
         .font(.largeTitle)
+        Button(action: {
+            // explicit animation
+            withAnimation(.easeInOut) {
+                self.viewModel.resetGame()
+            }
+        }, label: { Text("New Game") }) // TODO: make localizable string
     }
 }
 
